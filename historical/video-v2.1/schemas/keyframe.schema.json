@@ -1,0 +1,445 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sunshine-health.local/schemas/video-v2.1/keyframe.schema.json",
+  "title": "Sunshine Health Dynamic Video Keyframe V2.1",
+  "description": "Validation schema for individual keyframes in the Sunshine Health Dynamic Video Advertisement Skill V2.1 workflow.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "project",
+    "keyframe",
+    "product_state",
+    "store_state",
+    "information_state",
+    "visual_state",
+    "validation"
+  ],
+
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill",
+        "version",
+        "project_id"
+      ],
+      "properties": {
+        "skill": {
+          "type": "string",
+          "const": "sunshine-health-dynamic-video-ad"
+        },
+        "version": {
+          "type": "string",
+          "const": "2.1"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+
+    "keyframe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "name",
+        "purpose",
+        "status"
+      ],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "ESTABLISH_PRODUCT_HERO",
+            "INGREDIENT_BUILD",
+            "VFX_CLIMAX",
+            "RESOLUTION_BRAND_CLOSE"
+          ]
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "generated",
+            "review_required",
+            "approved",
+            "revision_required",
+            "rejected"
+          ]
+        }
+      }
+    },
+
+    "product_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_confirmed",
+        "identity_preserved",
+        "packaging_preserved",
+        "label_preserved",
+        "capacity_preserved",
+        "quantity_preserved",
+        "product_morphing_detected",
+        "product_duplication_detected"
+      ],
+      "properties": {
+        "reference_confirmed": {
+          "type": "boolean"
+        },
+        "identity_preserved": {
+          "type": "boolean"
+        },
+        "packaging_preserved": {
+          "type": "boolean"
+        },
+        "label_preserved": {
+          "type": "boolean"
+        },
+        "capacity_preserved": {
+          "type": "boolean"
+        },
+        "quantity_preserved": {
+          "type": "boolean"
+        },
+        "product_morphing_detected": {
+          "type": "boolean"
+        },
+        "product_duplication_detected": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "store_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_confirmed",
+        "environment_preserved",
+        "location_type",
+        "fake_shelf_detected",
+        "fake_store_detected",
+        "mixed_location_detected"
+      ],
+      "properties": {
+        "reference_confirmed": {
+          "type": "boolean"
+        },
+        "environment_preserved": {
+          "type": "boolean"
+        },
+        "location_type": {
+          "type": "string",
+          "enum": [
+            "shelf",
+            "storefront",
+            "other_real_store_reference"
+          ]
+        },
+        "fake_shelf_detected": {
+          "type": "boolean"
+        },
+        "fake_store_detected": {
+          "type": "boolean"
+        },
+        "mixed_location_detected": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "information_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ingredients_verified",
+        "claims_verified",
+        "promotion_verified",
+        "fabricated_information_detected"
+      ],
+      "properties": {
+        "ingredients_verified": {
+          "type": "boolean"
+        },
+        "claims_verified": {
+          "type": "boolean"
+        },
+        "promotion_verified": {
+          "type": "boolean"
+        },
+        "fabricated_information_detected": {
+          "type": "boolean"
+        },
+        "verified_ingredients": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "visual_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_visible",
+        "product_dominant",
+        "packaging_readable",
+        "store_visible",
+        "transition_ready"
+      ],
+      "properties": {
+        "product_visible": {
+          "type": "boolean"
+        },
+        "product_dominant": {
+          "type": "boolean"
+        },
+        "packaging_readable": {
+          "type": "boolean"
+        },
+        "store_visible": {
+          "type": "boolean"
+        },
+        "transition_ready": {
+          "type": "boolean"
+        },
+        "camera_description": {
+          "type": ["string", "null"]
+        },
+        "lighting_description": {
+          "type": ["string", "null"]
+        },
+        "ingredient_description": {
+          "type": ["string", "null"]
+        },
+        "vfx_description": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_lock_passed",
+        "store_lock_passed",
+        "information_lock_passed",
+        "visual_check_passed",
+        "approved_for_next_keyframe"
+      ],
+      "properties": {
+        "product_lock_passed": {
+          "type": "boolean"
+        },
+        "store_lock_passed": {
+          "type": "boolean"
+        },
+        "information_lock_passed": {
+          "type": "boolean"
+        },
+        "visual_check_passed": {
+          "type": "boolean"
+        },
+        "approved_for_next_keyframe": {
+          "type": "boolean"
+        },
+        "revision_notes": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "keyframe": {
+            "properties": {
+              "name": {
+                "const": "ESTABLISH_PRODUCT_HERO"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "keyframe": {
+            "properties": {
+              "index": {
+                "const": 1
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "keyframe": {
+            "properties": {
+              "name": {
+                "const": "INGREDIENT_BUILD"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "keyframe": {
+            "properties": {
+              "index": {
+                "const": 2
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "keyframe": {
+            "properties": {
+              "name": {
+                "const": "VFX_CLIMAX"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "keyframe": {
+            "properties": {
+              "index": {
+                "const": 3
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "keyframe": {
+            "properties": {
+              "name": {
+                "const": "RESOLUTION_BRAND_CLOSE"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "keyframe": {
+            "properties": {
+              "index": {
+                "const": 4
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "validation": {
+            "properties": {
+              "approved_for_next_keyframe": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "validation": {
+            "properties": {
+              "product_lock_passed": {
+                "const": true
+              },
+              "store_lock_passed": {
+                "const": true
+              },
+              "information_lock_passed": {
+                "const": true
+              },
+              "visual_check_passed": {
+                "const": true
+              }
+            }
+          },
+          "product_state": {
+            "properties": {
+              "identity_preserved": {
+                "const": true
+              },
+              "packaging_preserved": {
+                "const": true
+              },
+              "product_morphing_detected": {
+                "const": false
+              },
+              "product_duplication_detected": {
+                "const": false
+              }
+            }
+          },
+          "store_state": {
+            "properties": {
+              "environment_preserved": {
+                "const": true
+              },
+              "fake_shelf_detected": {
+                "const": false
+              },
+              "fake_store_detected": {
+                "const": false
+              },
+              "mixed_location_detected": {
+                "const": false
+              }
+            }
+          },
+          "information_state": {
+            "properties": {
+              "fabricated_information_detected": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
