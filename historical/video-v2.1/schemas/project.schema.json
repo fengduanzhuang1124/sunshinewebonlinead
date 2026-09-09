@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sunshine-health.local/schemas/video-v2.1/project.schema.json",
+  "title": "Sunshine Health Dynamic Video Project V2.1",
+  "description": "Validation schema for structured Sunshine Health dynamic video advertisement project data.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "project",
+    "product",
+    "promotion",
+    "references",
+    "locks",
+    "video",
+    "status"
+  ],
+
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill",
+        "version",
+        "type"
+      ],
+      "properties": {
+        "skill": {
+          "type": "string",
+          "const": "sunshine-health-dynamic-video-ad"
+        },
+        "version": {
+          "type": "string",
+          "const": "2.1"
+        },
+        "type": {
+          "type": "string",
+          "const": "product_video_advertisement"
+        }
+      }
+    },
+
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brand",
+        "chinese_name",
+        "english_name",
+        "series",
+        "product_type",
+        "capacity",
+        "dosage",
+        "quantity",
+        "main_ingredients",
+        "suitable_users"
+      ],
+      "properties": {
+        "brand": {
+          "type": ["string", "null"]
+        },
+        "chinese_name": {
+          "type": ["string", "null"]
+        },
+        "english_name": {
+          "type": ["string", "null"]
+        },
+        "series": {
+          "type": ["string", "null"]
+        },
+        "product_type": {
+          "type": ["string", "null"]
+        },
+        "capacity": {
+          "type": ["string", "null"]
+        },
+        "dosage": {
+          "type": ["string", "null"]
+        },
+        "quantity": {
+          "type": ["string", "number", "integer", "null"]
+        },
+        "main_ingredients": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "suitable_users": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "type",
+        "price",
+        "expiry"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": ["string", "null"]
+        },
+        "price": {
+          "type": ["string", "number", "null"]
+        },
+        "expiry": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_reference",
+        "store_reference",
+        "logo_reference"
+      ],
+      "properties": {
+        "product_reference": {
+          "type": "string"
+        },
+        "store_reference": {
+          "type": "string"
+        },
+        "logo_reference": {
+          "type": "string"
+        }
+      }
+    },
+
+    "locks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_lock",
+        "store_lock",
+        "logo_lock",
+        "information_lock"
+      ],
+      "properties": {
+        "product_lock": {
+          "type": "boolean",
+          "const": true
+        },
+        "store_lock": {
+          "type": "boolean",
+          "const": true
+        },
+        "logo_lock": {
+          "type": "boolean",
+          "const": true
+        },
+        "information_lock": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+
+    "video": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aspect_ratio",
+        "duration_seconds",
+        "keyframe_count"
+      ],
+      "properties": {
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "9:16",
+            "16:9",
+            "1:1"
+          ]
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 60
+        },
+        "keyframe_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        }
+      }
+    },
+
+    "status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recognition_complete",
+        "ready_for_keyframes"
+      ],
+      "properties": {
+        "recognition_complete": {
+          "type": "boolean"
+        },
+        "ready_for_keyframes": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "promotion": {
+            "properties": {
+              "enabled": {
+                "const": false
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "promotion": {
+            "properties": {
+              "type": {
+                "type": "null"
+              },
+              "price": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "properties": {
+              "ready_for_keyframes": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "properties": {
+              "recognition_complete": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
