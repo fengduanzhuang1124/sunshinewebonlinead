@@ -1,0 +1,502 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sunshine-health.local/schemas/dynamic-video-v3.0/visual-system.schema.json",
+  "title": "Sunshine Health Dynamic Video Visual System V3.0",
+  "description": "Validation schema for the L1-L10 visual system used before keyframe generation.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "project",
+    "visual_system",
+    "validation"
+  ],
+
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill",
+        "version",
+        "project_id"
+      ],
+      "properties": {
+        "skill": {
+          "type": "string",
+          "const": "sunshine-health-dynamic-video-ad"
+        },
+        "version": {
+          "type": "string",
+          "const": "3.0"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+
+    "visual_system": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "L1_subject",
+        "L2_space",
+        "L3_composition",
+        "L4_materiality",
+        "L5_lighting",
+        "L6_color",
+        "L7_relationship",
+        "L8_information",
+        "L9_dynamics",
+        "L10_constraints"
+      ],
+
+      "properties": {
+        "L1_subject": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "primary_subject",
+            "secondary_subjects"
+          ],
+          "properties": {
+            "primary_subject": {
+              "type": "string",
+              "minLength": 1
+            },
+            "secondary_subjects": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+
+        "L2_space": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "foreground",
+            "midground",
+            "background",
+            "depth_strategy",
+            "camera_distance",
+            "store_visibility"
+          ],
+          "properties": {
+            "foreground": {
+              "type": ["string", "null"]
+            },
+            "midground": {
+              "type": ["string", "null"]
+            },
+            "background": {
+              "type": ["string", "null"]
+            },
+            "depth_strategy": {
+              "type": ["string", "null"]
+            },
+            "camera_distance": {
+              "type": ["string", "null"]
+            },
+            "store_visibility": {
+              "type": "string",
+              "enum": [
+                "full",
+                "partial",
+                "minimal",
+                "not_applicable"
+              ]
+            }
+          }
+        },
+
+        "L3_composition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hero_position",
+            "product_scale",
+            "visual_balance",
+            "negative_space",
+            "ingredient_position",
+            "text_safe_area"
+          ],
+          "properties": {
+            "hero_position": {
+              "type": "string"
+            },
+            "product_scale": {
+              "type": "string"
+            },
+            "visual_balance": {
+              "type": "string"
+            },
+            "negative_space": {
+              "type": "string"
+            },
+            "ingredient_position": {
+              "type": "string"
+            },
+            "text_safe_area": {
+              "type": "string"
+            }
+          }
+        },
+
+        "L4_materiality": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "materials"
+          ],
+          "properties": {
+            "materials": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "physical_properties",
+                  "motion_behaviour"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "physical_properties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "motion_behaviour": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "L5_lighting": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "key_light",
+            "fill_light",
+            "rim_light",
+            "product_highlight",
+            "environment_lighting",
+            "transition_lighting"
+          ],
+          "properties": {
+            "key_light": {
+              "type": "string"
+            },
+            "fill_light": {
+              "type": "string"
+            },
+            "rim_light": {
+              "type": "string"
+            },
+            "product_highlight": {
+              "type": "string"
+            },
+            "environment_lighting": {
+              "type": "string"
+            },
+            "transition_lighting": {
+              "type": "string"
+            }
+          }
+        },
+
+        "L6_color": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sources",
+            "palette_description",
+            "random_colors_allowed"
+          ],
+          "properties": {
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "real_packaging",
+                  "real_store",
+                  "real_ingredients",
+                  "brand_identity"
+                ]
+              },
+              "uniqueItems": true
+            },
+            "palette_description": {
+              "type": "string"
+            },
+            "random_colors_allowed": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        },
+
+        "L7_relationship": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relationships"
+          ],
+          "properties": {
+            "relationships": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "subject",
+                  "relationship",
+                  "object"
+                ],
+                "properties": {
+                  "subject": {
+                    "type": "string"
+                  },
+                  "relationship": {
+                    "type": "string"
+                  },
+                  "object": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "L8_information": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "verified_only",
+            "on_screen_information"
+          ],
+          "properties": {
+            "verified_only": {
+              "type": "boolean",
+              "const": true
+            },
+            "on_screen_information": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+
+        "L9_dynamics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "camera_motion",
+            "product_motion",
+            "ingredient_motion",
+            "human_motion",
+            "environment_motion"
+          ],
+          "properties": {
+            "camera_motion": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "product_motion": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "ingredient_motion": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "human_motion": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "environment_motion": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+
+        "L10_constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "forbidden"
+          ],
+          "properties": {
+            "forbidden": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "product_morphing",
+                  "label_change",
+                  "fake_shelf",
+                  "fake_store",
+                  "human_identity_drift",
+                  "invented_ingredient",
+                  "invented_claim",
+                  "slideshow",
+                  "teleportation",
+                  "random_vfx",
+                  "packaging_redesign",
+                  "logo_redesign"
+                ]
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject_defined",
+        "space_defined",
+        "composition_defined",
+        "materiality_defined",
+        "lighting_defined",
+        "color_defined",
+        "relationships_defined",
+        "information_verified",
+        "dynamics_defined",
+        "constraints_defined",
+        "ready_for_keyframes"
+      ],
+      "properties": {
+        "subject_defined": {
+          "type": "boolean"
+        },
+        "space_defined": {
+          "type": "boolean"
+        },
+        "composition_defined": {
+          "type": "boolean"
+        },
+        "materiality_defined": {
+          "type": "boolean"
+        },
+        "lighting_defined": {
+          "type": "boolean"
+        },
+        "color_defined": {
+          "type": "boolean"
+        },
+        "relationships_defined": {
+          "type": "boolean"
+        },
+        "information_verified": {
+          "type": "boolean"
+        },
+        "dynamics_defined": {
+          "type": "boolean"
+        },
+        "constraints_defined": {
+          "type": "boolean"
+        },
+        "ready_for_keyframes": {
+          "type": "boolean"
+        },
+        "revision_notes": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "validation": {
+            "properties": {
+              "ready_for_keyframes": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "validation": {
+            "properties": {
+              "subject_defined": {
+                "const": true
+              },
+              "space_defined": {
+                "const": true
+              },
+              "composition_defined": {
+                "const": true
+              },
+              "materiality_defined": {
+                "const": true
+              },
+              "lighting_defined": {
+                "const": true
+              },
+              "color_defined": {
+                "const": true
+              },
+              "relationships_defined": {
+                "const": true
+              },
+              "information_verified": {
+                "const": true
+              },
+              "dynamics_defined": {
+                "const": true
+              },
+              "constraints_defined": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
