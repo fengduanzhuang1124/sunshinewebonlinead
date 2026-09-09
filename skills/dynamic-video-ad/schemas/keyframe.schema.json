@@ -1,0 +1,737 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sunshine-health.local/schemas/dynamic-video-v3.0/keyframe.schema.json",
+  "title": "Sunshine Health Dynamic Video Keyframe V3.0",
+  "description": "Validation schema for state-based keyframes, integrity locks, transition readiness and local revision in the Sunshine Health Dynamic Video Advertisement Skill V3.0.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "project",
+    "keyframe",
+    "states",
+    "locks",
+    "transition",
+    "validation"
+  ],
+
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill",
+        "version",
+        "project_id"
+      ],
+      "properties": {
+        "skill": {
+          "type": "string",
+          "const": "sunshine-health-dynamic-video-ad"
+        },
+        "version": {
+          "type": "string",
+          "const": "3.0"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+
+    "keyframe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "name",
+        "purpose",
+        "status"
+      ],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "TRUST_ESTABLISH",
+            "PRODUCT_HANDOFF_HERO",
+            "ORIGIN_MATERIAL_INTRODUCTION",
+            "FORMULA_BUILD",
+            "BENEFIT_VFX_CLIMAX",
+            "RESOLUTION_HERO_CLOSE",
+            "CUSTOM_STATE"
+          ]
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "generated",
+            "validation_required",
+            "revision_required",
+            "revalidated",
+            "approved",
+            "rejected"
+          ]
+        }
+      }
+    },
+
+    "states": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject_state",
+        "product_state",
+        "ingredient_state",
+        "human_state",
+        "store_state",
+        "camera_state",
+        "lighting_state",
+        "motion_readiness",
+        "transition_readiness"
+      ],
+      "properties": {
+        "subject_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "primary_subject",
+            "secondary_subjects",
+            "hierarchy_correct"
+          ],
+          "properties": {
+            "primary_subject": {
+              "type": "string",
+              "minLength": 1
+            },
+            "secondary_subjects": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "hierarchy_correct": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "product_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reference_confirmed",
+            "identity_preserved",
+            "packaging_preserved",
+            "label_preserved",
+            "proportions_preserved",
+            "capacity_preserved",
+            "quantity_preserved",
+            "morphing_detected",
+            "duplication_detected"
+          ],
+          "properties": {
+            "reference_confirmed": {
+              "type": "boolean"
+            },
+            "identity_preserved": {
+              "type": "boolean"
+            },
+            "packaging_preserved": {
+              "type": "boolean"
+            },
+            "label_preserved": {
+              "type": "boolean"
+            },
+            "proportions_preserved": {
+              "type": "boolean"
+            },
+            "capacity_preserved": {
+              "type": "boolean"
+            },
+            "quantity_preserved": {
+              "type": "boolean"
+            },
+            "morphing_detected": {
+              "type": "boolean"
+            },
+            "duplication_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "ingredient_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ingredients_present",
+            "ingredients_verified",
+            "material_behaviour_valid",
+            "invented_ingredient_detected"
+          ],
+          "properties": {
+            "ingredients_present": {
+              "type": "boolean"
+            },
+            "ingredients_verified": {
+              "type": "boolean"
+            },
+            "verified_ingredients": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "material_behaviour_valid": {
+              "type": "boolean"
+            },
+            "invented_ingredient_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "human_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "human_present",
+            "reference_confirmed",
+            "identity_preserved",
+            "face_preserved",
+            "glasses_preserved",
+            "hairstyle_preserved",
+            "clothing_preserved",
+            "body_proportions_preserved",
+            "identity_drift_detected"
+          ],
+          "properties": {
+            "human_present": {
+              "type": "boolean"
+            },
+            "reference_confirmed": {
+              "type": "boolean"
+            },
+            "identity_preserved": {
+              "type": "boolean"
+            },
+            "face_preserved": {
+              "type": "boolean"
+            },
+            "glasses_preserved": {
+              "type": "boolean"
+            },
+            "hairstyle_preserved": {
+              "type": "boolean"
+            },
+            "clothing_preserved": {
+              "type": "boolean"
+            },
+            "body_proportions_preserved": {
+              "type": "boolean"
+            },
+            "identity_drift_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "store_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reference_confirmed",
+            "environment_preserved",
+            "location_type",
+            "fake_shelf_detected",
+            "fake_store_detected",
+            "mixed_location_detected"
+          ],
+          "properties": {
+            "reference_confirmed": {
+              "type": "boolean"
+            },
+            "environment_preserved": {
+              "type": "boolean"
+            },
+            "location_type": {
+              "type": "string",
+              "enum": [
+                "real_shelf",
+                "real_storefront",
+                "real_interior",
+                "real_retail_counter"
+              ]
+            },
+            "fake_shelf_detected": {
+              "type": "boolean"
+            },
+            "fake_store_detected": {
+              "type": "boolean"
+            },
+            "mixed_location_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "camera_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "shot_type",
+            "camera_position",
+            "camera_distance",
+            "camera_orientation"
+          ],
+          "properties": {
+            "shot_type": {
+              "type": "string"
+            },
+            "camera_position": {
+              "type": "string"
+            },
+            "camera_distance": {
+              "type": "string"
+            },
+            "camera_orientation": {
+              "type": "string"
+            }
+          }
+        },
+
+        "lighting_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "key_light",
+            "fill_light",
+            "rim_light",
+            "product_highlight",
+            "environment_lighting"
+          ],
+          "properties": {
+            "key_light": {
+              "type": "string"
+            },
+            "fill_light": {
+              "type": "string"
+            },
+            "rim_light": {
+              "type": "string"
+            },
+            "product_highlight": {
+              "type": "string"
+            },
+            "environment_lighting": {
+              "type": "string"
+            }
+          }
+        },
+
+        "motion_readiness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "camera_ready",
+            "product_ready",
+            "ingredient_ready",
+            "human_ready",
+            "lighting_ready"
+          ],
+          "properties": {
+            "camera_ready": {
+              "type": "boolean"
+            },
+            "product_ready": {
+              "type": "boolean"
+            },
+            "ingredient_ready": {
+              "type": "boolean"
+            },
+            "human_ready": {
+              "type": "boolean"
+            },
+            "lighting_ready": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "transition_readiness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "next_state_defined",
+            "causal_trigger_defined",
+            "transition_path_defined",
+            "ready"
+          ],
+          "properties": {
+            "next_state_defined": {
+              "type": "boolean"
+            },
+            "causal_trigger_defined": {
+              "type": "boolean"
+            },
+            "transition_path_defined": {
+              "type": "boolean"
+            },
+            "ready": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+
+    "locks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_lock",
+        "information_lock",
+        "store_lock",
+        "logo_lock",
+        "human_lock"
+      ],
+      "properties": {
+        "product_lock": {
+          "type": "boolean"
+        },
+        "information_lock": {
+          "type": "boolean"
+        },
+        "store_lock": {
+          "type": "boolean"
+        },
+        "logo_lock": {
+          "type": "boolean"
+        },
+        "human_lock": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from_state",
+        "to_state",
+        "trigger",
+        "motion_path",
+        "causal"
+      ],
+      "properties": {
+        "from_state": {
+          "type": "string"
+        },
+        "to_state": {
+          "type": ["string", "null"]
+        },
+        "trigger": {
+          "type": ["string", "null"]
+        },
+        "motion_path": {
+          "type": ["string", "null"]
+        },
+        "causal": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_check",
+        "information_check",
+        "store_check",
+        "logo_check",
+        "human_check",
+        "visual_check",
+        "transition_check",
+        "requires_local_revision",
+        "approved_for_next_keyframe"
+      ],
+      "properties": {
+        "product_check": {
+          "type": "boolean"
+        },
+        "information_check": {
+          "type": "boolean"
+        },
+        "store_check": {
+          "type": "boolean"
+        },
+        "logo_check": {
+          "type": "boolean"
+        },
+        "human_check": {
+          "type": "boolean"
+        },
+        "visual_check": {
+          "type": "boolean"
+        },
+        "transition_check": {
+          "type": "boolean"
+        },
+        "requires_local_revision": {
+          "type": "boolean"
+        },
+        "failing_components": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "product",
+              "information",
+              "ingredient",
+              "store",
+              "logo",
+              "human_face",
+              "human_identity",
+              "text",
+              "lighting",
+              "composition",
+              "transition"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "revision_notes": {
+          "type": ["string", "null"]
+        },
+        "approved_for_next_keyframe": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "states": {
+            "properties": {
+              "human_state": {
+                "properties": {
+                  "human_present": {
+                    "const": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "locks": {
+            "properties": {
+              "human_lock": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "states": {
+            "properties": {
+              "human_state": {
+                "properties": {
+                  "human_present": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "locks": {
+            "properties": {
+              "human_lock": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "validation": {
+            "properties": {
+              "approved_for_next_keyframe": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "validation": {
+            "properties": {
+              "product_check": {
+                "const": true
+              },
+              "information_check": {
+                "const": true
+              },
+              "store_check": {
+                "const": true
+              },
+              "logo_check": {
+                "const": true
+              },
+              "human_check": {
+                "const": true
+              },
+              "visual_check": {
+                "const": true
+              },
+              "transition_check": {
+                "const": true
+              },
+              "requires_local_revision": {
+                "const": false
+              }
+            }
+          },
+
+          "states": {
+            "properties": {
+              "product_state": {
+                "properties": {
+                  "identity_preserved": {
+                    "const": true
+                  },
+                  "packaging_preserved": {
+                    "const": true
+                  },
+                  "label_preserved": {
+                    "const": true
+                  },
+                  "proportions_preserved": {
+                    "const": true
+                  },
+                  "morphing_detected": {
+                    "const": false
+                  },
+                  "duplication_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "ingredient_state": {
+                "properties": {
+                  "invented_ingredient_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "store_state": {
+                "properties": {
+                  "environment_preserved": {
+                    "const": true
+                  },
+                  "fake_shelf_detected": {
+                    "const": false
+                  },
+                  "fake_store_detected": {
+                    "const": false
+                  },
+                  "mixed_location_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "human_state": {
+                "properties": {
+                  "identity_drift_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "transition_readiness": {
+                "properties": {
+                  "ready": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+
+          "transition": {
+            "properties": {
+              "causal": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "validation": {
+            "properties": {
+              "requires_local_revision": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "validation": {
+            "properties": {
+              "approved_for_next_keyframe": {
+                "const": false
+              },
+              "failing_components": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
