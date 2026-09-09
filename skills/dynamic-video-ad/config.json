@@ -1,0 +1,419 @@
+{
+  "skill_id": "sunshine-health-dynamic-video-ad",
+  "version": "3.0",
+  "status": "active",
+  "category": "dynamic_video_advertisement",
+  "description": "Structured multi-stage AI video advertisement workflow for Sunshine Health retail products using verified inputs, integrity locks, state-based keyframes, causal transitions and final QA.",
+
+  "truth_priority": [
+    "REAL_PRODUCT",
+    "REAL_BACKGROUND",
+    "REAL_HUMAN",
+    "REAL_LOGO",
+    "VERIFIED_INFORMATION",
+    "VISUAL_BEAUTIFICATION",
+    "VFX"
+  ],
+
+  "workflow": [
+    "FLOW_1_PRODUCT_RESEARCH",
+    "FLOW_1_5_CORE_EXTRACTION",
+    "FIVE_LOCKS",
+    "FLOW_2_L1_L10_VISUAL_SYSTEM",
+    "FLOW_3_STATE_BASED_KEYFRAMES",
+    "KEYFRAME_VALIDATION",
+    "LOCAL_REVISION",
+    "FLOW_4_CAUSAL_VIDEO_PROMPT",
+    "FLOW_5_FINAL_VIDEO",
+    "FINAL_QA"
+  ],
+
+  "flow_1": {
+    "name": "PRODUCT_RESEARCH",
+    "output": "research_json",
+    "required_fields": [
+      "brand",
+      "chinese_product_name",
+      "english_product_name",
+      "series",
+      "product_type",
+      "capacity",
+      "dosage",
+      "quantity",
+      "main_ingredients",
+      "suitable_users",
+      "promotion",
+      "gift_set_contents",
+      "store_reference",
+      "logo_reference",
+      "human_reference",
+      "video_duration",
+      "aspect_ratio"
+    ],
+    "uncertain_information_policy": "STOP_OR_UNRESOLVED",
+    "allow_guessing": false
+  },
+
+  "flow_1_5": {
+    "name": "CORE_EXTRACTION",
+    "required_outputs": [
+      "product_identity",
+      "core_product_idea",
+      "visual_ingredients",
+      "target_user_direction",
+      "dominant_visual_metaphor",
+      "dominant_material_behaviour",
+      "main_visual_climax",
+      "closing_brand_state"
+    ],
+    "world_model": [
+      "OBJECTS",
+      "RELATIONSHIPS",
+      "MATERIALS",
+      "SPACE"
+    ]
+  },
+
+  "locks": {
+    "product_lock": {
+      "enabled": true,
+      "preserve": [
+        "brand",
+        "product_name",
+        "packaging",
+        "bottle_shape",
+        "jar_shape",
+        "tube_shape",
+        "box_structure",
+        "proportions",
+        "cap",
+        "label",
+        "label_hierarchy",
+        "colours",
+        "dosage",
+        "capsule_count",
+        "tablet_count",
+        "capacity",
+        "series",
+        "edition",
+        "quantity"
+      ],
+      "forbidden": [
+        "product_redesign",
+        "invent_missing_product",
+        "unconfirmed_duplication",
+        "merge_products",
+        "alter_packaging_structure",
+        "product_morphing"
+      ]
+    },
+
+    "information_lock": {
+      "enabled": true,
+      "allowed_sources": [
+        "readable_packaging",
+        "user_provided_information",
+        "confirmed_product_data",
+        "confirmed_promotion_information"
+      ],
+      "forbidden_fabrication": [
+        "ingredients",
+        "dosage",
+        "certification",
+        "clinical_claims",
+        "original_price",
+        "promotion",
+        "expiration_date",
+        "medical_benefit"
+      ]
+    },
+
+    "store_lock": {
+      "enabled": true,
+      "real_environment_only": true,
+      "single_environment_per_project": true,
+      "allowed_source_types": [
+        "real_shelf",
+        "real_storefront",
+        "real_interior",
+        "real_retail_counter"
+      ],
+      "allowed_adjustments": [
+        "brightness_correction",
+        "colour_correction",
+        "clutter_cleanup",
+        "customer_removal",
+        "staff_removal",
+        "sharpness_improvement",
+        "minor_depth_enhancement",
+        "controlled_lighting_correction"
+      ],
+      "forbidden": [
+        "fake_shelf",
+        "fictional_store",
+        "store_replacement",
+        "mixed_unrelated_locations",
+        "invented_display",
+        "generic_pharmacy_replacement"
+      ]
+    },
+
+    "logo_lock": {
+      "enabled": true,
+      "forbidden": [
+        "redraw_logo",
+        "recolour_logo",
+        "reshape_logo",
+        "distort_logo",
+        "unnecessary_rotation",
+        "replace_logo",
+        "imitate_logo"
+      ],
+      "allowed_animation": [
+        "light_reveal",
+        "controlled_glow",
+        "sunlight_spreading",
+        "subtle_particle_reveal"
+      ]
+    },
+
+    "human_lock": {
+      "enabled_when_human_present": true,
+      "preserve": [
+        "identity",
+        "facial_structure",
+        "glasses",
+        "hairstyle",
+        "clothing",
+        "body_proportions",
+        "age_appearance",
+        "key_accessories"
+      ],
+      "allow_replacement_person": false
+    }
+  },
+
+  "flow_2": {
+    "name": "L1_L10_VISUAL_SYSTEM",
+    "layers": {
+      "L1": "SUBJECT",
+      "L2": "SPACE",
+      "L3": "COMPOSITION",
+      "L4": "MATERIALITY",
+      "L5": "LIGHTING",
+      "L6": "COLOR",
+      "L7": "RELATIONSHIP",
+      "L8": "INFORMATION",
+      "L9": "DYNAMICS",
+      "L10": "CONSTRAINTS"
+    }
+  },
+
+  "flow_3": {
+    "name": "STATE_BASED_KEYFRAME_DESIGN",
+    "count_mode": "state_change_based",
+    "recommended_counts": {
+      "simple_product": 4,
+      "human_and_product": 6,
+      "multi_ingredient": 6,
+      "complex_narrative": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "standard_six_keyframes": [
+      "TRUST_ESTABLISH",
+      "PRODUCT_HANDOFF_HERO",
+      "ORIGIN_MATERIAL_INTRODUCTION",
+      "FORMULA_BUILD",
+      "BENEFIT_VFX_CLIMAX",
+      "RESOLUTION_HERO_CLOSE"
+    ],
+    "required_state_fields": [
+      "subject_state",
+      "product_state",
+      "ingredient_state",
+      "human_state",
+      "store_state",
+      "camera_state",
+      "lighting_state",
+      "motion_readiness",
+      "transition_readiness"
+    ]
+  },
+
+  "keyframe_generation": {
+    "mode": "sequential",
+    "one_at_a_time": true,
+    "workflow": [
+      "GENERATE",
+      "VALIDATE",
+      "LOCAL_MODIFY",
+      "REVALIDATE",
+      "APPROVE",
+      "NEXT_KEYFRAME"
+    ]
+  },
+
+  "keyframe_validation": {
+    "product_checks": [
+      "identity_preserved",
+      "packaging_preserved",
+      "label_preserved",
+      "proportions_preserved",
+      "capacity_preserved",
+      "no_morphing",
+      "no_duplication"
+    ],
+    "information_checks": [
+      "ingredients_verified",
+      "claims_verified",
+      "promotion_verified",
+      "no_fabrication"
+    ],
+    "store_checks": [
+      "real_environment_preserved",
+      "no_fake_shelf",
+      "no_mixed_location"
+    ],
+    "logo_checks": [
+      "correct_logo",
+      "no_redraw",
+      "no_distortion"
+    ],
+    "human_checks": [
+      "identity_preserved",
+      "face_preserved",
+      "glasses_preserved",
+      "hairstyle_preserved",
+      "clothing_preserved"
+    ],
+    "visual_checks": [
+      "composition_correct",
+      "product_readable",
+      "ingredient_hierarchy_correct",
+      "transition_ready"
+    ]
+  },
+
+  "local_revision": {
+    "enabled": true,
+    "preserve_correct_regions": true,
+    "workflow": [
+      "IDENTIFY_FAILING_COMPONENT",
+      "LOCAL_MODIFY",
+      "REVALIDATE"
+    ],
+    "common_failure_targets": [
+      "product",
+      "ingredient",
+      "human_face",
+      "store",
+      "text",
+      "lighting"
+    ]
+  },
+
+  "flow_4": {
+    "name": "CAUSAL_VIDEO_PROMPT",
+    "prompt_language": "English",
+    "continuity": "continuous",
+    "transition_model": "causal",
+    "required_questions": [
+      "what_starts_moving",
+      "why_it_moves",
+      "where_it_moves",
+      "what_it_becomes",
+      "what_triggers_next_state"
+    ],
+    "prompt_sections": [
+      "camera",
+      "product_motion",
+      "ingredient_motion",
+      "human_motion",
+      "lighting_transition",
+      "audio",
+      "constraints"
+    ],
+    "material_driven_motion": true
+  },
+
+  "flow_5": {
+    "name": "FINAL_VIDEO_GENERATION",
+    "required_inputs": [
+      "research_json",
+      "core_extraction",
+      "five_locks",
+      "l1_l10_visual_definition",
+      "approved_keyframes",
+      "final_video_prompt",
+      "real_product_reference",
+      "real_store_reference",
+      "real_logo_reference"
+    ],
+    "human_reference_required_when_applicable": true,
+    "output_type": "continuous_video",
+    "forbidden_output": [
+      "slideshow_video",
+      "unrelated_image_sequence",
+      "random_scene_replacement",
+      "product_morphing",
+      "fake_packaging",
+      "fake_store",
+      "human_identity_change",
+      "fake_ingredients",
+      "random_vfx",
+      "unsupported_claims"
+    ]
+  },
+
+  "final_qa": {
+    "product": [
+      "product_identity_correct",
+      "packaging_correct",
+      "label_correct",
+      "capacity_correct",
+      "quantity_correct",
+      "no_morphing",
+      "no_duplication"
+    ],
+    "information": [
+      "ingredients_verified",
+      "claims_verified",
+      "promotion_verified",
+      "no_fabricated_information"
+    ],
+    "store": [
+      "real_environment_preserved",
+      "no_fake_shelves",
+      "no_mixed_environment"
+    ],
+    "logo": [
+      "authentic_logo",
+      "no_distortion",
+      "no_redesign"
+    ],
+    "human": [
+      "same_person",
+      "same_face",
+      "same_hair",
+      "same_glasses",
+      "same_clothing"
+    ],
+    "motion": [
+      "continuous",
+      "causal",
+      "material_driven",
+      "no_teleportation",
+      "no_slideshow"
+    ],
+    "visual": [
+      "product_readable",
+      "vfx_supports_product",
+      "clear_frame_hierarchy",
+      "strong_final_product_hero"
+    ]
+  },
+
+  "system_principle": "Define what exists, how it relates, how it looks, how it behaves and how it changes before final video generation."
+}
