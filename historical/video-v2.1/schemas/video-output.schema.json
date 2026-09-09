@@ -1,0 +1,479 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sunshine-health.local/schemas/video-v2.1/video-output.schema.json",
+  "title": "Sunshine Health Dynamic Video Output V2.1",
+  "description": "Validation schema for FLOW 3 video prompt output and FLOW 4 final video validation.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "project",
+    "video_prompt",
+    "continuity",
+    "integrity",
+    "final_validation"
+  ],
+
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill",
+        "version",
+        "project_id"
+      ],
+      "properties": {
+        "skill": {
+          "type": "string",
+          "const": "sunshine-health-dynamic-video-ad"
+        },
+        "version": {
+          "type": "string",
+          "const": "2.1"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+
+    "video_prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "language",
+        "continuity_mode",
+        "camera_motion",
+        "product_motion",
+        "ingredient_motion",
+        "lighting_changes",
+        "visual_effects",
+        "audio_direction",
+        "constraints"
+      ],
+      "properties": {
+        "language": {
+          "type": "string",
+          "const": "English"
+        },
+        "continuity_mode": {
+          "type": "string",
+          "const": "continuous"
+        },
+        "camera_motion": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "product_motion": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ingredient_motion": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lighting_changes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "visual_effects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "audio_direction": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "preserve_product",
+              "preserve_store",
+              "preserve_logo",
+              "preserve_verified_information",
+              "no_product_morphing",
+              "no_packaging_redesign",
+              "no_fake_products",
+              "no_fake_store",
+              "no_slideshow",
+              "no_teleportation"
+            ]
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "continuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "continuous_sequence",
+        "keyframe_order_preserved",
+        "environment_continuity",
+        "product_identity_continuity",
+        "slideshow_detected",
+        "teleportation_detected",
+        "random_cut_detected"
+      ],
+      "properties": {
+        "continuous_sequence": {
+          "type": "boolean"
+        },
+        "keyframe_order_preserved": {
+          "type": "boolean"
+        },
+        "environment_continuity": {
+          "type": "boolean"
+        },
+        "product_identity_continuity": {
+          "type": "boolean"
+        },
+        "slideshow_detected": {
+          "type": "boolean"
+        },
+        "teleportation_detected": {
+          "type": "boolean"
+        },
+        "random_cut_detected": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_lock",
+        "information_lock",
+        "store_lock",
+        "logo_lock"
+      ],
+      "properties": {
+        "product_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "packaging_preserved",
+            "label_preserved",
+            "capacity_preserved",
+            "quantity_preserved",
+            "morphing_detected",
+            "duplication_detected"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "packaging_preserved": {
+              "type": "boolean"
+            },
+            "label_preserved": {
+              "type": "boolean"
+            },
+            "capacity_preserved": {
+              "type": "boolean"
+            },
+            "quantity_preserved": {
+              "type": "boolean"
+            },
+            "morphing_detected": {
+              "type": "boolean"
+            },
+            "duplication_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "information_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "ingredients_verified",
+            "promotion_verified",
+            "claims_verified",
+            "fabrication_detected"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "ingredients_verified": {
+              "type": "boolean"
+            },
+            "promotion_verified": {
+              "type": "boolean"
+            },
+            "claims_verified": {
+              "type": "boolean"
+            },
+            "fabrication_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "store_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "real_environment_preserved",
+            "fake_shelf_detected",
+            "fake_store_detected",
+            "mixed_location_detected"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "real_environment_preserved": {
+              "type": "boolean"
+            },
+            "fake_shelf_detected": {
+              "type": "boolean"
+            },
+            "fake_store_detected": {
+              "type": "boolean"
+            },
+            "mixed_location_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "logo_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "logo_preserved",
+            "logo_redrawn",
+            "logo_recoloured",
+            "logo_distorted"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "logo_preserved": {
+              "type": "boolean"
+            },
+            "logo_redrawn": {
+              "type": "boolean"
+            },
+            "logo_recoloured": {
+              "type": "boolean"
+            },
+            "logo_distorted": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+
+    "final_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_check",
+        "information_check",
+        "store_check",
+        "logo_check",
+        "continuity_check",
+        "video_check",
+        "approved"
+      ],
+      "properties": {
+        "product_check": {
+          "type": "boolean"
+        },
+        "information_check": {
+          "type": "boolean"
+        },
+        "store_check": {
+          "type": "boolean"
+        },
+        "logo_check": {
+          "type": "boolean"
+        },
+        "continuity_check": {
+          "type": "boolean"
+        },
+        "video_check": {
+          "type": "boolean"
+        },
+        "approved": {
+          "type": "boolean"
+        },
+        "revision_notes": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "final_validation": {
+            "properties": {
+              "approved": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "final_validation": {
+            "properties": {
+              "product_check": {
+                "const": true
+              },
+              "information_check": {
+                "const": true
+              },
+              "store_check": {
+                "const": true
+              },
+              "logo_check": {
+                "const": true
+              },
+              "continuity_check": {
+                "const": true
+              },
+              "video_check": {
+                "const": true
+              }
+            }
+          },
+
+          "continuity": {
+            "properties": {
+              "continuous_sequence": {
+                "const": true
+              },
+              "keyframe_order_preserved": {
+                "const": true
+              },
+              "environment_continuity": {
+                "const": true
+              },
+              "product_identity_continuity": {
+                "const": true
+              },
+              "slideshow_detected": {
+                "const": false
+              },
+              "teleportation_detected": {
+                "const": false
+              },
+              "random_cut_detected": {
+                "const": false
+              }
+            }
+          },
+
+          "integrity": {
+            "properties": {
+              "product_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "packaging_preserved": {
+                    "const": true
+                  },
+                  "label_preserved": {
+                    "const": true
+                  },
+                  "morphing_detected": {
+                    "const": false
+                  },
+                  "duplication_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "information_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "fabrication_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "store_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "real_environment_preserved": {
+                    "const": true
+                  },
+                  "fake_shelf_detected": {
+                    "const": false
+                  },
+                  "fake_store_detected": {
+                    "const": false
+                  },
+                  "mixed_location_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "logo_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "logo_preserved": {
+                    "const": true
+                  },
+                  "logo_redrawn": {
+                    "const": false
+                  },
+                  "logo_recoloured": {
+                    "const": false
+                  },
+                  "logo_distorted": {
+                    "const": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
