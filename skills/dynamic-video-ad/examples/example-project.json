@@ -1,0 +1,583 @@
+{
+  "project": {
+    "skill": "sunshine-health-dynamic-video-ad",
+    "version": "3.0",
+    "type": "dynamic_product_video",
+    "project_id": "example-video-v3.0-001"
+  },
+
+  "product": {
+    "brand": "Example Brand",
+    "chinese_name": "示例产品",
+    "english_name": "Example Product",
+    "series": "Example Series",
+    "product_type": "supplement",
+    "capacity": "60 capsules",
+    "dosage": "example only",
+    "quantity": 1,
+    "main_ingredients": [
+      "Example Ingredient A",
+      "Example Ingredient B",
+      "Example Ingredient C"
+    ],
+    "suitable_users": [
+      "Example target user group"
+    ],
+    "gift_set_contents": []
+  },
+
+  "promotion": {
+    "enabled": false,
+    "type": null,
+    "price": null,
+    "expiry": null
+  },
+
+  "references": {
+    "product_reference": "real_product_reference_required",
+    "store_reference": "real_sunshine_health_store_reference_required",
+    "logo_reference": "real_sunshine_health_logo_reference_required",
+    "human_reference": null
+  },
+
+  "locks": {
+    "product_lock": true,
+    "information_lock": true,
+    "store_lock": true,
+    "logo_lock": true,
+    "human_lock": false
+  },
+
+  "video": {
+    "aspect_ratio": "9:16",
+    "duration_seconds": 10,
+    "complexity": "multi_ingredient"
+  },
+
+  "core_extraction": {
+    "product_identity": "Example Product",
+    "core_product_idea": "Present the real product as the central hero while verified ingredients build around it.",
+    "visual_ingredients": [
+      "Example Ingredient A",
+      "Example Ingredient B",
+      "Example Ingredient C"
+    ],
+    "target_user_direction": "Example target user group",
+    "dominant_visual_metaphor": "Verified ingredients assemble around the product without replacing it.",
+    "dominant_material_behaviour": "Controlled ingredient motion based on realistic physical properties.",
+    "main_visual_climax": "Ingredients converge around the real product while lighting intensifies.",
+    "closing_brand_state": "Clean Sunshine Health retail hero close.",
+
+    "world_model": {
+      "objects": [
+        "real product",
+        "ingredient A",
+        "ingredient B",
+        "ingredient C",
+        "real Sunshine Health store",
+        "Sunshine Health logo"
+      ],
+
+      "relationships": [
+        "product remains the primary visual subject",
+        "ingredients support the product",
+        "ingredients move around but do not cover the label",
+        "store remains visible as the authentic environment",
+        "logo appears only in the closing brand state"
+      ],
+
+      "materials": [
+        {
+          "name": "ingredient A",
+          "behaviour": [
+            "slow controlled movement",
+            "realistic surface response"
+          ]
+        },
+        {
+          "name": "ingredient B",
+          "behaviour": [
+            "gentle orbit",
+            "controlled depth movement"
+          ]
+        },
+        {
+          "name": "ingredient C",
+          "behaviour": [
+            "subtle rise",
+            "soft dispersal"
+          ]
+        }
+      ],
+
+      "space": {
+        "foreground": "controlled ingredient elements",
+        "midground": "real product hero",
+        "background": "authentic Sunshine Health store environment",
+        "camera_distance": "medium product hero shot",
+        "environment_boundary": "real store reference must remain visible and unchanged"
+      }
+    }
+  },
+
+  "status": {
+    "research_complete": true,
+    "core_extraction_complete": true,
+    "locks_validated": true,
+    "ready_for_visual_system": true
+  },
+
+  "visual_system": {
+    "L1_subject": {
+      "primary_subject": "real product",
+      "secondary_subjects": [
+        "verified ingredients",
+        "Sunshine Health store",
+        "Sunshine Health logo"
+      ]
+    },
+
+    "L2_space": {
+      "foreground": "ingredient elements",
+      "midground": "product hero",
+      "background": "real Sunshine Health retail environment",
+      "depth_strategy": "clear foreground-midground-background separation",
+      "camera_distance": "medium hero framing",
+      "store_visibility": "partial"
+    },
+
+    "L3_composition": {
+      "hero_position": "central dominant position",
+      "product_scale": "large commercial hero scale",
+      "visual_balance": "product dominant with supporting ingredients",
+      "negative_space": "maintained around product label",
+      "ingredient_position": "around product without covering packaging",
+      "text_safe_area": "upper and side safe zones"
+    },
+
+    "L4_materiality": {
+      "materials": [
+        {
+          "name": "ingredient A",
+          "physical_properties": [
+            "realistic",
+            "clean",
+            "product-relevant"
+          ],
+          "motion_behaviour": [
+            "slow orbit",
+            "controlled convergence"
+          ]
+        },
+        {
+          "name": "ingredient B",
+          "physical_properties": [
+            "realistic",
+            "natural surface",
+            "commercial photography appearance"
+          ],
+          "motion_behaviour": [
+            "gentle rise",
+            "subtle rotation"
+          ]
+        },
+        {
+          "name": "ingredient C",
+          "physical_properties": [
+            "lightweight",
+            "controlled",
+            "non-fantasy"
+          ],
+          "motion_behaviour": [
+            "soft dispersal",
+            "gradual assembly"
+          ]
+        }
+      ]
+    },
+
+    "L5_lighting": {
+      "key_light": "soft front commercial key light",
+      "fill_light": "gentle product fill light",
+      "rim_light": "subtle product separation light",
+      "product_highlight": "controlled label highlight",
+      "environment_lighting": "preserve real Sunshine Health store lighting",
+      "transition_lighting": "gradual increase toward VFX climax"
+    },
+
+    "L6_color": {
+      "sources": [
+        "real_packaging",
+        "real_store",
+        "real_ingredients",
+        "brand_identity"
+      ],
+      "palette_description": "Derived only from the real product, ingredients and Sunshine Health environment.",
+      "random_colors_allowed": false
+    },
+
+    "L7_relationship": {
+      "relationships": [
+        {
+          "subject": "ingredients",
+          "relationship": "support",
+          "object": "real product"
+        },
+        {
+          "subject": "real product",
+          "relationship": "remains dominant within",
+          "object": "real Sunshine Health store"
+        },
+        {
+          "subject": "Sunshine Health logo",
+          "relationship": "appears after",
+          "object": "final product hero state"
+        }
+      ]
+    },
+
+    "L8_information": {
+      "verified_only": true,
+      "on_screen_information": [
+        "product name",
+        "verified ingredient names",
+        "suitable user direction"
+      ]
+    },
+
+    "L9_dynamics": {
+      "camera_motion": [
+        "slow push-in",
+        "controlled tracking"
+      ],
+      "product_motion": [
+        "subtle hero elevation"
+      ],
+      "ingredient_motion": [
+        "controlled orbit",
+        "gradual convergence",
+        "soft dispersal"
+      ],
+      "human_motion": [],
+      "environment_motion": [
+        "minimal background movement"
+      ]
+    },
+
+    "L10_constraints": {
+      "forbidden": [
+        "product_morphing",
+        "label_change",
+        "fake_shelf",
+        "fake_store",
+        "invented_ingredient",
+        "invented_claim",
+        "slideshow",
+        "teleportation",
+        "random_vfx",
+        "packaging_redesign",
+        "logo_redesign"
+      ]
+    }
+  },
+
+  "visual_system_validation": {
+    "subject_defined": true,
+    "space_defined": true,
+    "composition_defined": true,
+    "materiality_defined": true,
+    "lighting_defined": true,
+    "color_defined": true,
+    "relationships_defined": true,
+    "information_verified": true,
+    "dynamics_defined": true,
+    "constraints_defined": true,
+    "ready_for_keyframes": true,
+    "revision_notes": null
+  },
+
+  "keyframes": [
+    {
+      "index": 1,
+      "name": "TRUST_ESTABLISH",
+      "status": "approved",
+      "purpose": "Establish the real product inside the authentic Sunshine Health environment.",
+      "state_summary": {
+        "product": "fully visible and unchanged",
+        "ingredients": "not yet active",
+        "store": "clearly recognisable",
+        "camera": "stable medium hero frame",
+        "lighting": "clean retail lighting"
+      }
+    },
+
+    {
+      "index": 2,
+      "name": "PRODUCT_HANDOFF_HERO",
+      "status": "approved",
+      "purpose": "Increase attention on the real product.",
+      "state_summary": {
+        "product": "slightly elevated hero state",
+        "ingredients": "minimal",
+        "store": "preserved",
+        "camera": "slow push-in",
+        "lighting": "front highlight strengthened"
+      }
+    },
+
+    {
+      "index": 3,
+      "name": "ORIGIN_MATERIAL_INTRODUCTION",
+      "status": "approved",
+      "purpose": "Introduce verified ingredient materials.",
+      "state_summary": {
+        "product": "unchanged",
+        "ingredients": "ingredient A and B enter the midground",
+        "store": "preserved",
+        "camera": "controlled tracking",
+        "lighting": "ingredient edge light introduced"
+      }
+    },
+
+    {
+      "index": 4,
+      "name": "FORMULA_BUILD",
+      "status": "approved",
+      "purpose": "Show verified ingredients building around the product.",
+      "state_summary": {
+        "product": "remains primary subject",
+        "ingredients": "controlled assembly around product",
+        "store": "visible",
+        "camera": "subtle orbit",
+        "lighting": "gradual intensity increase"
+      }
+    },
+
+    {
+      "index": 5,
+      "name": "BENEFIT_VFX_CLIMAX",
+      "status": "approved",
+      "purpose": "Create the main commercial visual climax.",
+      "state_summary": {
+        "product": "fully readable",
+        "ingredients": "converged around hero area",
+        "store": "authentic background maintained",
+        "camera": "controlled close hero framing",
+        "lighting": "strongest controlled highlight"
+      }
+    },
+
+    {
+      "index": 6,
+      "name": "RESOLUTION_HERO_CLOSE",
+      "status": "approved",
+      "purpose": "Return to a clean product and brand close.",
+      "state_summary": {
+        "product": "clean final hero",
+        "ingredients": "reduced to subtle supporting elements",
+        "store": "clear and authentic",
+        "camera": "stable closing composition",
+        "lighting": "clean retail finish"
+      }
+    }
+  ],
+
+  "keyframe_workflow": {
+    "mode": "sequential",
+    "process": [
+      "GENERATE",
+      "VALIDATE",
+      "LOCAL_MODIFY",
+      "REVALIDATE",
+      "APPROVE",
+      "NEXT_KEYFRAME"
+    ],
+    "all_keyframes_approved": true
+  },
+
+  "video_prompt": {
+    "language": "English",
+    "continuity": "continuous",
+    "transition_model": "causal",
+
+    "camera_motion": [
+      "Begin with a stable commercial hero frame.",
+      "Slowly push toward the product.",
+      "Use controlled tracking as verified ingredients enter the scene.",
+      "Use a subtle orbit during the formula build.",
+      "Return to a stable hero composition for the final close."
+    ],
+
+    "product_motion": [
+      "The real product remains structurally unchanged.",
+      "Use only subtle hero elevation and controlled positioning."
+    ],
+
+    "ingredient_motion": [
+      "Verified ingredient A enters gradually from the foreground.",
+      "Verified ingredient B rises into the midground.",
+      "Verified ingredient C softly disperses and then converges around the product.",
+      "All ingredients move according to defined material behaviour."
+    ],
+
+    "human_motion": [],
+
+    "lighting_transition": [
+      "Begin with clean retail lighting.",
+      "Increase product highlight during the formula build.",
+      "Reach controlled lighting climax at keyframe 5.",
+      "Return to a clean balanced retail state for the final close."
+    ],
+
+    "visual_effects": [
+      "subtle ingredient-related particles",
+      "controlled highlight sweep",
+      "soft depth enhancement"
+    ],
+
+    "audio_direction": [
+      "subtle Sunshine Health retail ambience",
+      "soft material movement sound",
+      "controlled transition sound",
+      "clean final brand tone"
+    ],
+
+    "constraints": [
+      "preserve_product",
+      "preserve_information",
+      "preserve_store",
+      "preserve_logo",
+      "no_product_morphing",
+      "no_packaging_redesign",
+      "no_fake_products",
+      "no_fake_store",
+      "no_fake_ingredients",
+      "no_slideshow",
+      "no_teleportation",
+      "no_random_vfx",
+      "no_unsupported_claims"
+    ],
+
+    "causal_transitions": [
+      {
+        "from_state": "TRUST_ESTABLISH",
+        "to_state": "PRODUCT_HANDOFF_HERO",
+        "trigger": "camera begins slow push-in",
+        "motion": "product gains subtle hero elevation",
+        "result": "viewer attention shifts toward the product"
+      },
+      {
+        "from_state": "PRODUCT_HANDOFF_HERO",
+        "to_state": "ORIGIN_MATERIAL_INTRODUCTION",
+        "trigger": "product highlight increases",
+        "motion": "verified ingredients enter from foreground and midground",
+        "result": "ingredient origin becomes visually established"
+      },
+      {
+        "from_state": "ORIGIN_MATERIAL_INTRODUCTION",
+        "to_state": "FORMULA_BUILD",
+        "trigger": "ingredients reach the product depth plane",
+        "motion": "ingredients begin controlled orbit and assembly",
+        "result": "formula structure forms around the product"
+      },
+      {
+        "from_state": "FORMULA_BUILD",
+        "to_state": "BENEFIT_VFX_CLIMAX",
+        "trigger": "ingredient convergence reaches peak density",
+        "motion": "lighting and product-relevant VFX intensify",
+        "result": "commercial visual climax is reached"
+      },
+      {
+        "from_state": "BENEFIT_VFX_CLIMAX",
+        "to_state": "RESOLUTION_HERO_CLOSE",
+        "trigger": "camera movement slows",
+        "motion": "ingredients retreat into subtle supporting positions",
+        "result": "clean product hero and Sunshine Health brand close"
+      }
+    ]
+  },
+
+  "continuity": {
+    "continuous_sequence": true,
+    "keyframe_order_preserved": true,
+    "causal_transition_preserved": true,
+    "environment_continuity": true,
+    "product_identity_continuity": true,
+    "human_identity_continuity": true,
+    "slideshow_detected": false,
+    "teleportation_detected": false,
+    "random_scene_replacement_detected": false
+  },
+
+  "integrity": {
+    "product_lock": {
+      "passed": true,
+      "identity_preserved": true,
+      "packaging_preserved": true,
+      "label_preserved": true,
+      "capacity_preserved": true,
+      "quantity_preserved": true,
+      "morphing_detected": false,
+      "duplication_detected": false
+    },
+
+    "information_lock": {
+      "passed": true,
+      "ingredients_verified": true,
+      "claims_verified": true,
+      "promotion_verified": true,
+      "fabrication_detected": false
+    },
+
+    "store_lock": {
+      "passed": true,
+      "environment_preserved": true,
+      "fake_shelf_detected": false,
+      "fake_store_detected": false,
+      "mixed_environment_detected": false
+    },
+
+    "logo_lock": {
+      "passed": true,
+      "logo_preserved": true,
+      "redraw_detected": false,
+      "recolour_detected": false,
+      "distortion_detected": false
+    },
+
+    "human_lock": {
+      "human_present": false,
+      "passed": true,
+      "identity_preserved": true,
+      "face_preserved": true,
+      "hair_preserved": true,
+      "glasses_preserved": true,
+      "clothing_preserved": true,
+      "identity_drift_detected": false
+    }
+  },
+
+  "motion_validation": {
+    "camera_motion_valid": true,
+    "product_motion_valid": true,
+    "ingredient_motion_valid": true,
+    "human_motion_valid": true,
+    "material_behaviour_valid": true,
+    "causal_motion_valid": true,
+    "random_vfx_detected": false
+  },
+
+  "final_qa": {
+    "product_check": true,
+    "information_check": true,
+    "store_check": true,
+    "logo_check": true,
+    "human_check": true,
+    "motion_check": true,
+    "visual_check": true,
+    "continuity_check": true,
+    "approved": true,
+    "revision_required": false,
+    "revision_notes": null
+  }
+}
