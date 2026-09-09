@@ -1,0 +1,509 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sunshine-health.local/schemas/dynamic-video-v3.0/project.schema.json",
+  "title": "Sunshine Health Dynamic Video Project V3.0",
+  "description": "Validation schema for product research, core extraction, references and integrity locks in the Sunshine Health Dynamic Video Advertisement Skill V3.0.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "project",
+    "product",
+    "promotion",
+    "references",
+    "locks",
+    "video",
+    "core_extraction",
+    "status"
+  ],
+
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill",
+        "version",
+        "type",
+        "project_id"
+      ],
+      "properties": {
+        "skill": {
+          "type": "string",
+          "const": "sunshine-health-dynamic-video-ad"
+        },
+        "version": {
+          "type": "string",
+          "const": "3.0"
+        },
+        "type": {
+          "type": "string",
+          "const": "dynamic_product_video"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brand",
+        "chinese_name",
+        "english_name",
+        "series",
+        "product_type",
+        "capacity",
+        "dosage",
+        "quantity",
+        "main_ingredients",
+        "suitable_users"
+      ],
+      "properties": {
+        "brand": {
+          "type": ["string", "null"]
+        },
+        "chinese_name": {
+          "type": ["string", "null"]
+        },
+        "english_name": {
+          "type": ["string", "null"]
+        },
+        "series": {
+          "type": ["string", "null"]
+        },
+        "product_type": {
+          "type": ["string", "null"]
+        },
+        "capacity": {
+          "type": ["string", "null"]
+        },
+        "dosage": {
+          "type": ["string", "null"]
+        },
+        "quantity": {
+          "type": ["string", "number", "integer", "null"]
+        },
+        "main_ingredients": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "suitable_users": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "gift_set_contents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "type",
+        "price",
+        "expiry"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": ["string", "null"]
+        },
+        "price": {
+          "type": ["string", "number", "null"]
+        },
+        "expiry": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_reference",
+        "store_reference",
+        "logo_reference",
+        "human_reference"
+      ],
+      "properties": {
+        "product_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "store_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logo_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "human_reference": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "locks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_lock",
+        "information_lock",
+        "store_lock",
+        "logo_lock",
+        "human_lock"
+      ],
+      "properties": {
+        "product_lock": {
+          "type": "boolean",
+          "const": true
+        },
+        "information_lock": {
+          "type": "boolean",
+          "const": true
+        },
+        "store_lock": {
+          "type": "boolean",
+          "const": true
+        },
+        "logo_lock": {
+          "type": "boolean",
+          "const": true
+        },
+        "human_lock": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "video": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aspect_ratio",
+        "duration_seconds",
+        "complexity"
+      ],
+      "properties": {
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "9:16",
+            "16:9",
+            "1:1"
+          ]
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 60
+        },
+        "complexity": {
+          "type": "string",
+          "enum": [
+            "simple_product",
+            "human_and_product",
+            "multi_ingredient",
+            "complex_narrative"
+          ]
+        }
+      }
+    },
+
+    "core_extraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_identity",
+        "core_product_idea",
+        "visual_ingredients",
+        "target_user_direction",
+        "dominant_visual_metaphor",
+        "dominant_material_behaviour",
+        "main_visual_climax",
+        "closing_brand_state",
+        "world_model"
+      ],
+      "properties": {
+        "product_identity": {
+          "type": ["string", "null"]
+        },
+        "core_product_idea": {
+          "type": ["string", "null"]
+        },
+        "visual_ingredients": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "maxItems": 5,
+          "uniqueItems": true
+        },
+        "target_user_direction": {
+          "type": ["string", "null"]
+        },
+        "dominant_visual_metaphor": {
+          "type": ["string", "null"]
+        },
+        "dominant_material_behaviour": {
+          "type": ["string", "null"]
+        },
+        "main_visual_climax": {
+          "type": ["string", "null"]
+        },
+        "closing_brand_state": {
+          "type": ["string", "null"]
+        },
+
+        "world_model": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "objects",
+            "relationships",
+            "materials",
+            "space"
+          ],
+          "properties": {
+            "objects": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+
+            "relationships": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+
+            "materials": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "behaviour"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "behaviour": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  }
+                }
+              }
+            },
+
+            "space": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "foreground",
+                "midground",
+                "background",
+                "camera_distance",
+                "environment_boundary"
+              ],
+              "properties": {
+                "foreground": {
+                  "type": ["string", "null"]
+                },
+                "midground": {
+                  "type": ["string", "null"]
+                },
+                "background": {
+                  "type": ["string", "null"]
+                },
+                "camera_distance": {
+                  "type": ["string", "null"]
+                },
+                "environment_boundary": {
+                  "type": ["string", "null"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "research_complete",
+        "core_extraction_complete",
+        "locks_validated",
+        "ready_for_visual_system"
+      ],
+      "properties": {
+        "research_complete": {
+          "type": "boolean"
+        },
+        "core_extraction_complete": {
+          "type": "boolean"
+        },
+        "locks_validated": {
+          "type": "boolean"
+        },
+        "ready_for_visual_system": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "promotion": {
+            "properties": {
+              "enabled": {
+                "const": false
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "promotion": {
+            "properties": {
+              "type": {
+                "type": "null"
+              },
+              "price": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "references": {
+            "properties": {
+              "human_reference": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "locks": {
+            "properties": {
+              "human_lock": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "properties": {
+              "ready_for_visual_system": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "properties": {
+              "research_complete": {
+                "const": true
+              },
+              "core_extraction_complete": {
+                "const": true
+              },
+              "locks_validated": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "video": {
+            "properties": {
+              "complexity": {
+                "const": "human_and_product"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "references": {
+            "properties": {
+              "human_reference": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "locks": {
+            "properties": {
+              "human_lock": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
