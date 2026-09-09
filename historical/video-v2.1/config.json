@@ -1,0 +1,272 @@
+{
+  "skill_id": "sunshine-health-dynamic-video-ad",
+  "version": "2.1",
+  "status": "historical",
+  "category": "dynamic_video_advertisement",
+  "description": "Structured multi-stage AI video advertisement workflow for Sunshine Health retail products.",
+
+  "workflow": [
+    "PRODUCT_RECOGNITION",
+    "STRUCTURED_JSON_OUTPUT",
+    "KEYFRAME_GENERATION",
+    "KEYFRAME_CONFIRMATION",
+    "VIDEO_PROMPT_GENERATION",
+    "FINAL_VIDEO_GENERATION",
+    "FINAL_VALIDATION"
+  ],
+
+  "flow_1": {
+    "name": "PRODUCT_RECOGNITION",
+    "output": "structured_json",
+    "required_fields": [
+      "brand",
+      "chinese_product_name",
+      "english_product_name",
+      "product_type",
+      "series",
+      "capacity",
+      "dosage",
+      "quantity",
+      "main_ingredients",
+      "suitable_users",
+      "promotion_information",
+      "store_reference_type",
+      "logo_reference",
+      "video_aspect_ratio",
+      "video_duration"
+    ],
+    "uncertain_information_policy": "do_not_guess"
+  },
+
+  "locks": {
+    "product_lock": {
+      "enabled": true,
+      "preserve": [
+        "brand",
+        "product_name",
+        "packaging",
+        "bottle_shape",
+        "jar_shape",
+        "tube_shape",
+        "box_proportions",
+        "cap",
+        "label_structure",
+        "colours",
+        "logo",
+        "dosage",
+        "capsule_count",
+        "tablet_count",
+        "capacity",
+        "series",
+        "edition",
+        "quantity"
+      ],
+      "allow_product_duplication": false,
+      "allow_product_redesign": false
+    },
+
+    "information_lock": {
+      "enabled": true,
+      "allowed_sources": [
+        "readable_product_packaging",
+        "user_provided_information",
+        "confirmed_product_data"
+      ],
+      "forbidden_fabrication": [
+        "ingredients",
+        "dosage",
+        "quantity",
+        "certification",
+        "original_price",
+        "promotion",
+        "expiration_date",
+        "medical_claims"
+      ]
+    },
+
+    "store_lock": {
+      "enabled": true,
+      "real_store_only": true,
+      "single_location_per_project": true,
+      "allowed_adjustments": [
+        "brightness",
+        "colour_correction",
+        "sharpness",
+        "minor_clutter_removal",
+        "customer_removal",
+        "staff_removal",
+        "controlled_depth_enhancement"
+      ],
+      "forbidden": [
+        "generate_fake_shelves",
+        "replace_store",
+        "create_fictional_display_counters",
+        "invent_new_retail_displays",
+        "mix_storefront_and_shelf_environments",
+        "generate_new_sunshine_health_store"
+      ]
+    },
+
+    "logo_lock": {
+      "enabled": true,
+      "forbidden": [
+        "redraw_logo",
+        "recolour_logo",
+        "distort_logo",
+        "replace_logo",
+        "generate_similar_logo"
+      ]
+    }
+  },
+
+  "flow_2": {
+    "name": "KEYFRAME_GENERATION",
+    "generation_mode": "sequential",
+    "confirmation_required": true,
+    "default_keyframe_count": 4,
+
+    "keyframes": [
+      {
+        "index": 1,
+        "name": "ESTABLISH_PRODUCT_HERO",
+        "purpose": "Introduce the real product and authentic Sunshine Health environment."
+      },
+      {
+        "index": 2,
+        "name": "INGREDIENT_BUILD",
+        "purpose": "Introduce verified ingredients or product characteristics."
+      },
+      {
+        "index": 3,
+        "name": "VFX_CLIMAX",
+        "purpose": "Create the main visual energy point while preserving product integrity."
+      },
+      {
+        "index": 4,
+        "name": "RESOLUTION_BRAND_CLOSE",
+        "purpose": "Return attention to the real product and Sunshine Health brand."
+      }
+    ],
+
+    "inheritance_rules": [
+      "product_identity",
+      "product_proportions",
+      "store_environment",
+      "logo_rules",
+      "verified_information",
+      "advertisement_direction"
+    ],
+
+    "validation_required_before_next_keyframe": true
+  },
+
+  "keyframe_validation": {
+    "checks": [
+      "product_unchanged",
+      "packaging_readable",
+      "capacity_correct",
+      "label_structure_preserved",
+      "real_store_preserved",
+      "no_fake_products",
+      "no_fake_shelves",
+      "no_invented_ingredients",
+      "no_unverified_claims",
+      "transition_ready_composition"
+    ]
+  },
+
+  "flow_3": {
+    "name": "VIDEO_PROMPT_GENERATION",
+    "prompt_language": "English",
+    "continuity": "continuous",
+
+    "prompt_sections": [
+      "camera_motion",
+      "product_motion",
+      "ingredient_motion",
+      "lighting",
+      "visual_effects",
+      "audio_direction",
+      "continuity_constraints"
+    ],
+
+    "forbidden_video_behaviour": [
+      "slideshow_transition",
+      "random_cut",
+      "teleportation",
+      "abrupt_environment_replacement",
+      "product_shape_change",
+      "packaging_redesign"
+    ]
+  },
+
+  "flow_4": {
+    "name": "FINAL_VIDEO_GENERATION",
+
+    "required_inputs": [
+      "confirmed_product_json",
+      "confirmed_product_reference",
+      "confirmed_store_reference",
+      "confirmed_logo_reference",
+      "confirmed_keyframes",
+      "final_video_prompt",
+      "integrity_locks"
+    ],
+
+    "output_type": "continuous_video",
+
+    "forbidden_output": [
+      "slideshow_style_video",
+      "unrelated_image_sequence",
+      "random_scene_changes",
+      "fake_store_environment",
+      "fictional_packaging",
+      "altered_labels",
+      "product_duplication",
+      "uncontrolled_vfx",
+      "fabricated_information"
+    ]
+  },
+
+  "final_validation": {
+    "product_checks": [
+      "brand_correct",
+      "product_name_correct",
+      "packaging_unchanged",
+      "bottle_or_box_structure_correct",
+      "capacity_correct",
+      "dosage_correct",
+      "quantity_correct",
+      "logo_correct"
+    ],
+
+    "information_checks": [
+      "ingredients_verified",
+      "promotion_confirmed",
+      "no_fabricated_claims",
+      "no_invented_certification",
+      "no_fabricated_price"
+    ],
+
+    "store_checks": [
+      "real_sunshine_health_environment_preserved",
+      "no_fake_shelf",
+      "no_fake_storefront",
+      "no_mixed_location"
+    ],
+
+    "video_checks": [
+      "visual_continuity_maintained",
+      "product_identity_maintained",
+      "no_slideshow",
+      "no_teleportation",
+      "no_product_morphing",
+      "no_packaging_redesign",
+      "controlled_motion",
+      "vfx_supports_product",
+      "final_product_visibility_clear"
+    ]
+  },
+
+  "system_principle": "Define and validate the advertisement before final video generation."
+}
