@@ -1,0 +1,132 @@
+{
+  "project": {
+    "skill": "sunshine-health-dynamic-video-ad",
+    "version": "2.1",
+    "type": "product_video_advertisement",
+    "project_id": "example-video-v2.1-001"
+  },
+
+  "product": {
+    "brand": "Example Brand",
+    "chinese_name": "示例产品",
+    "english_name": "Example Product",
+    "series": "Example Series",
+    "product_type": "supplement",
+    "capacity": "60 capsules",
+    "dosage": "example only",
+    "quantity": 1,
+    "main_ingredients": [
+      "Example Ingredient A",
+      "Example Ingredient B"
+    ],
+    "suitable_users": [
+      "Example target user group"
+    ]
+  },
+
+  "promotion": {
+    "enabled": false,
+    "type": null,
+    "price": null,
+    "expiry": null
+  },
+
+  "references": {
+    "product_reference": "required",
+    "store_reference": "required",
+    "logo_reference": "required"
+  },
+
+  "locks": {
+    "product_lock": true,
+    "store_lock": true,
+    "logo_lock": true,
+    "information_lock": true
+  },
+
+  "video": {
+    "aspect_ratio": "9:16",
+    "duration_seconds": 10,
+    "keyframe_count": 4
+  },
+
+  "status": {
+    "recognition_complete": true,
+    "ready_for_keyframes": true
+  },
+
+  "keyframes": [
+    {
+      "index": 1,
+      "name": "ESTABLISH_PRODUCT_HERO",
+      "status": "approved",
+      "description": "Real product hero composition inside the authentic Sunshine Health retail environment."
+    },
+    {
+      "index": 2,
+      "name": "INGREDIENT_BUILD",
+      "status": "approved",
+      "description": "Verified ingredients introduced while preserving the real product packaging."
+    },
+    {
+      "index": 3,
+      "name": "VFX_CLIMAX",
+      "status": "approved",
+      "description": "Controlled product-related visual effects with no product morphing."
+    },
+    {
+      "index": 4,
+      "name": "RESOLUTION_BRAND_CLOSE",
+      "status": "approved",
+      "description": "Product and Sunshine Health brand return to a clean final hero composition."
+    }
+  ],
+
+  "video_prompt": {
+    "language": "English",
+    "continuity": "continuous",
+    "camera_motion": [
+      "slow push-in",
+      "controlled product tracking"
+    ],
+    "product_motion": [
+      "subtle hero elevation"
+    ],
+    "ingredient_motion": [
+      "controlled ingredient movement"
+    ],
+    "lighting_changes": [
+      "soft retail lighting",
+      "controlled highlight sweep"
+    ],
+    "visual_effects": [
+      "subtle product-related particles"
+    ],
+    "audio_direction": [
+      "soft retail ambience",
+      "clean transition sound",
+      "brand closing tone"
+    ],
+    "constraints": [
+      "preserve_product",
+      "preserve_store",
+      "preserve_logo",
+      "no_product_morphing",
+      "no_fake_products",
+      "no_fake_store",
+      "no_slideshow",
+      "no_teleportation"
+    ]
+  },
+
+  "final_validation": {
+    "product_check": true,
+    "information_check": true,
+    "store_check": true,
+    "logo_check": true,
+    "continuity_check": true,
+    "video_check": true,
+    "approved": true,
+    "revision_notes": null
+  }
+}
