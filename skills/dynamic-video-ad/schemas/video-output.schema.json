@@ -1,0 +1,733 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sunshine-health.local/schemas/dynamic-video-v3.0/video-output.schema.json",
+  "title": "Sunshine Health Dynamic Video Output V3.0",
+  "description": "Validation schema for causal video prompt output, final video integrity and final QA in the Sunshine Health Dynamic Video Advertisement Skill V3.0.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "project",
+    "video_prompt",
+    "continuity",
+    "integrity",
+    "motion_validation",
+    "final_qa"
+  ],
+
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill",
+        "version",
+        "project_id"
+      ],
+      "properties": {
+        "skill": {
+          "type": "string",
+          "const": "sunshine-health-dynamic-video-ad"
+        },
+        "version": {
+          "type": "string",
+          "const": "3.0"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+
+    "video_prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "language",
+        "continuity",
+        "transition_model",
+        "camera_motion",
+        "product_motion",
+        "ingredient_motion",
+        "human_motion",
+        "lighting_transition",
+        "visual_effects",
+        "audio_direction",
+        "constraints"
+      ],
+      "properties": {
+        "language": {
+          "type": "string",
+          "const": "English"
+        },
+
+        "continuity": {
+          "type": "string",
+          "const": "continuous"
+        },
+
+        "transition_model": {
+          "type": "string",
+          "const": "causal"
+        },
+
+        "camera_motion": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "product_motion": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "ingredient_motion": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "human_motion": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "lighting_transition": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "visual_effects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "audio_direction": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "preserve_product",
+              "preserve_information",
+              "preserve_store",
+              "preserve_logo",
+              "preserve_human_identity",
+              "no_product_morphing",
+              "no_packaging_redesign",
+              "no_fake_products",
+              "no_fake_store",
+              "no_fake_ingredients",
+              "no_human_identity_drift",
+              "no_slideshow",
+              "no_teleportation",
+              "no_random_vfx",
+              "no_unsupported_claims"
+            ]
+          },
+          "uniqueItems": true
+        },
+
+        "causal_transitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "from_state",
+              "to_state",
+              "trigger",
+              "motion",
+              "result"
+            ],
+            "properties": {
+              "from_state": {
+                "type": "string"
+              },
+              "to_state": {
+                "type": "string"
+              },
+              "trigger": {
+                "type": "string"
+              },
+              "motion": {
+                "type": "string"
+              },
+              "result": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "continuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "continuous_sequence",
+        "keyframe_order_preserved",
+        "causal_transition_preserved",
+        "environment_continuity",
+        "product_identity_continuity",
+        "human_identity_continuity",
+        "slideshow_detected",
+        "teleportation_detected",
+        "random_scene_replacement_detected"
+      ],
+      "properties": {
+        "continuous_sequence": {
+          "type": "boolean"
+        },
+        "keyframe_order_preserved": {
+          "type": "boolean"
+        },
+        "causal_transition_preserved": {
+          "type": "boolean"
+        },
+        "environment_continuity": {
+          "type": "boolean"
+        },
+        "product_identity_continuity": {
+          "type": "boolean"
+        },
+        "human_identity_continuity": {
+          "type": "boolean"
+        },
+        "slideshow_detected": {
+          "type": "boolean"
+        },
+        "teleportation_detected": {
+          "type": "boolean"
+        },
+        "random_scene_replacement_detected": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_lock",
+        "information_lock",
+        "store_lock",
+        "logo_lock",
+        "human_lock"
+      ],
+
+      "properties": {
+        "product_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "identity_preserved",
+            "packaging_preserved",
+            "label_preserved",
+            "capacity_preserved",
+            "quantity_preserved",
+            "morphing_detected",
+            "duplication_detected"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "identity_preserved": {
+              "type": "boolean"
+            },
+            "packaging_preserved": {
+              "type": "boolean"
+            },
+            "label_preserved": {
+              "type": "boolean"
+            },
+            "capacity_preserved": {
+              "type": "boolean"
+            },
+            "quantity_preserved": {
+              "type": "boolean"
+            },
+            "morphing_detected": {
+              "type": "boolean"
+            },
+            "duplication_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "information_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "ingredients_verified",
+            "claims_verified",
+            "promotion_verified",
+            "fabrication_detected"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "ingredients_verified": {
+              "type": "boolean"
+            },
+            "claims_verified": {
+              "type": "boolean"
+            },
+            "promotion_verified": {
+              "type": "boolean"
+            },
+            "fabrication_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "store_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "environment_preserved",
+            "fake_shelf_detected",
+            "fake_store_detected",
+            "mixed_environment_detected"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "environment_preserved": {
+              "type": "boolean"
+            },
+            "fake_shelf_detected": {
+              "type": "boolean"
+            },
+            "fake_store_detected": {
+              "type": "boolean"
+            },
+            "mixed_environment_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "logo_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "logo_preserved",
+            "redraw_detected",
+            "recolour_detected",
+            "distortion_detected"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "logo_preserved": {
+              "type": "boolean"
+            },
+            "redraw_detected": {
+              "type": "boolean"
+            },
+            "recolour_detected": {
+              "type": "boolean"
+            },
+            "distortion_detected": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "human_lock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "human_present",
+            "passed",
+            "identity_preserved",
+            "face_preserved",
+            "hair_preserved",
+            "glasses_preserved",
+            "clothing_preserved",
+            "identity_drift_detected"
+          ],
+          "properties": {
+            "human_present": {
+              "type": "boolean"
+            },
+            "passed": {
+              "type": "boolean"
+            },
+            "identity_preserved": {
+              "type": "boolean"
+            },
+            "face_preserved": {
+              "type": "boolean"
+            },
+            "hair_preserved": {
+              "type": "boolean"
+            },
+            "glasses_preserved": {
+              "type": "boolean"
+            },
+            "clothing_preserved": {
+              "type": "boolean"
+            },
+            "identity_drift_detected": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+
+    "motion_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "camera_motion_valid",
+        "product_motion_valid",
+        "ingredient_motion_valid",
+        "human_motion_valid",
+        "material_behaviour_valid",
+        "causal_motion_valid",
+        "random_vfx_detected"
+      ],
+      "properties": {
+        "camera_motion_valid": {
+          "type": "boolean"
+        },
+        "product_motion_valid": {
+          "type": "boolean"
+        },
+        "ingredient_motion_valid": {
+          "type": "boolean"
+        },
+        "human_motion_valid": {
+          "type": "boolean"
+        },
+        "material_behaviour_valid": {
+          "type": "boolean"
+        },
+        "causal_motion_valid": {
+          "type": "boolean"
+        },
+        "random_vfx_detected": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "final_qa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_check",
+        "information_check",
+        "store_check",
+        "logo_check",
+        "human_check",
+        "motion_check",
+        "visual_check",
+        "continuity_check",
+        "approved"
+      ],
+      "properties": {
+        "product_check": {
+          "type": "boolean"
+        },
+        "information_check": {
+          "type": "boolean"
+        },
+        "store_check": {
+          "type": "boolean"
+        },
+        "logo_check": {
+          "type": "boolean"
+        },
+        "human_check": {
+          "type": "boolean"
+        },
+        "motion_check": {
+          "type": "boolean"
+        },
+        "visual_check": {
+          "type": "boolean"
+        },
+        "continuity_check": {
+          "type": "boolean"
+        },
+        "approved": {
+          "type": "boolean"
+        },
+        "revision_required": {
+          "type": "boolean"
+        },
+        "revision_notes": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "integrity": {
+            "properties": {
+              "human_lock": {
+                "properties": {
+                  "human_present": {
+                    "const": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "integrity": {
+            "properties": {
+              "human_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "identity_drift_detected": {
+                    "const": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    {
+      "if": {
+        "properties": {
+          "final_qa": {
+            "properties": {
+              "approved": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "final_qa": {
+            "properties": {
+              "product_check": {
+                "const": true
+              },
+              "information_check": {
+                "const": true
+              },
+              "store_check": {
+                "const": true
+              },
+              "logo_check": {
+                "const": true
+              },
+              "human_check": {
+                "const": true
+              },
+              "motion_check": {
+                "const": true
+              },
+              "visual_check": {
+                "const": true
+              },
+              "continuity_check": {
+                "const": true
+              },
+              "revision_required": {
+                "const": false
+              }
+            }
+          },
+
+          "continuity": {
+            "properties": {
+              "continuous_sequence": {
+                "const": true
+              },
+              "keyframe_order_preserved": {
+                "const": true
+              },
+              "causal_transition_preserved": {
+                "const": true
+              },
+              "environment_continuity": {
+                "const": true
+              },
+              "product_identity_continuity": {
+                "const": true
+              },
+              "human_identity_continuity": {
+                "const": true
+              },
+              "slideshow_detected": {
+                "const": false
+              },
+              "teleportation_detected": {
+                "const": false
+              },
+              "random_scene_replacement_detected": {
+                "const": false
+              }
+            }
+          },
+
+          "integrity": {
+            "properties": {
+              "product_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "identity_preserved": {
+                    "const": true
+                  },
+                  "packaging_preserved": {
+                    "const": true
+                  },
+                  "label_preserved": {
+                    "const": true
+                  },
+                  "morphing_detected": {
+                    "const": false
+                  },
+                  "duplication_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "information_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "fabrication_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "store_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "environment_preserved": {
+                    "const": true
+                  },
+                  "fake_shelf_detected": {
+                    "const": false
+                  },
+                  "fake_store_detected": {
+                    "const": false
+                  },
+                  "mixed_environment_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "logo_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "logo_preserved": {
+                    "const": true
+                  },
+                  "redraw_detected": {
+                    "const": false
+                  },
+                  "recolour_detected": {
+                    "const": false
+                  },
+                  "distortion_detected": {
+                    "const": false
+                  }
+                }
+              },
+
+              "human_lock": {
+                "properties": {
+                  "passed": {
+                    "const": true
+                  },
+                  "identity_drift_detected": {
+                    "const": false
+                  }
+                }
+              }
+            }
+          },
+
+          "motion_validation": {
+            "properties": {
+              "camera_motion_valid": {
+                "const": true
+              },
+              "product_motion_valid": {
+                "const": true
+              },
+              "ingredient_motion_valid": {
+                "const": true
+              },
+              "human_motion_valid": {
+                "const": true
+              },
+              "material_behaviour_valid": {
+                "const": true
+              },
+              "causal_motion_valid": {
+                "const": true
+              },
+              "random_vfx_detected": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
